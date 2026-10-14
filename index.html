@@ -730,7 +730,7 @@ function renderRishalo(M){
   box.innerHTML=`
     <div class="rishalo-badge"><span class="rishalo-flame">🔥</span> Дружбанчик дня</div>
     <div class="rishalo-body">
-      ${url?`<a class="rishalo-nick" href="${url}" target="_blank" rel="noopener">${nick}</a>`:`<span class="rishalo-nick">${nick}</span>`}
+      ${url?`<a class="rishalo-nick" href="${esc(url)}" target="_blank" rel="noopener">${nick}</a>`:`<span class="rishalo-nick">${nick}</span>`}
       <span class="rishalo-gain">+${fmtMoney(M.rishalo.delta,0)} за сьогодні</span>
       <span class="rishalo-prog">прогрес: ${pct}% · ${fmtMoney(j.collected,0)}</span>
       <span class="rishalo-asof">станом на ${kyivHM(M.asOf)}</span>
@@ -758,7 +758,7 @@ function renderGrid(M){
 function card(j,i){
   const closed=j.status==="Закрита";
   const url=safeUrl(j.mono);
-  const nameHtml=url?`<a class="jar-name" href="${url}" target="_blank" rel="noopener">${esc(j.name)}</a>`:`<span class="jar-name">${esc(j.name)}</span>`;
+  const nameHtml=url?`<a class="jar-name" href="${esc(url)}" target="_blank" rel="noopener">${esc(j.name)}</a>`:`<span class="jar-name">${esc(j.name)}</span>`;
   let badges=`<span class="badge ${closed?"closed":"active"}">${closed?"Закрита":"Активна"}</span>`;
   if(closed && j.drawn) badges+=`<span class="badge drawn">Лот розіграно</span>`;
   else if(j.raffle) badges+=`<span class="badge gift">🎁 Лот</span>`;
